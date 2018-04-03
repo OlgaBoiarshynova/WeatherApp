@@ -19,10 +19,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\AdministrativeArea.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Country.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CurrentConditions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Imperial.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Location.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Metric.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Temperature.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Data\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
   </ItemGroup>
 </Project>
