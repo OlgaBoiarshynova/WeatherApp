@@ -16,6 +16,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\AccuWeatherService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\IAccuWeatherService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -28,7 +30,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Temperature.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Data\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
   </ItemGroup>
 </Project>
