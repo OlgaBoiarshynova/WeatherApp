@@ -9,6 +9,6 @@ namespace Weather.Data
     public interface IAccuWeatherService
     {
         Task<List<Location>> GetLocations(string searchText);
-        Task<List<CurrentConditions>> GetCurrentConditions(int locationKey);
+        Task<List<CurrentConditions>> GetCurrentConditions(string locationKey);
     }
 }
