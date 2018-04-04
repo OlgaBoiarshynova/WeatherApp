@@ -21,7 +21,7 @@ namespace Weather.Data
         public AccuWeatherService()
         {
             client = new HttpClient();
-            client.MaxResponseContentBufferSize = 256000;
+            client.MaxResponseContentBufferSize = 256000; 
         }
 
         
