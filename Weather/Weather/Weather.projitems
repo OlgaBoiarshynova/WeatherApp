@@ -19,6 +19,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\AccuWeatherManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\AccuWeatherService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\IAccuWeatherService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HttpLogHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\LocationWeatherInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -29,8 +31,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Location.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Metric.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Temperature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SearchLocationPage.xaml.cs">
+      <DependentUpon>SearchLocationPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SearchLocationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

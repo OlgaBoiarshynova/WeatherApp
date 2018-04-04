@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Weather.Models;
+using Weather.Views;
 using Xamarin.Forms;
 
 namespace Weather
@@ -21,13 +23,23 @@ namespace Weather
 
             var src = new List<CurrentConditions>();
             src.Add(new CurrentConditions());
-
-            listView.ItemsSource = src;
+            listView.ItemsSource = App.WeatherManager.ConditionsList;
         }
 
         private void OnDeleteClicked(object sender, EventArgs e)
         {
-            Console.WriteLine(e);
+            Debug.WriteLine("OnDeleteClicked");
+        }
+
+        private async void OnAddItemClicked(object sender, EventArgs e)
+        {
+            var searchLocationPage = new SearchLocationPage();
+            await Navigation.PushAsync(searchLocationPage);
+        }
+
+        private void OnRefreshItemClicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("OnRefreshItemClicked");
         }
     }
 }

@@ -3,20 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Weather"
              x:Class="Weather.MainPage">
-    <RelativeLayout>
-        <Entry Text="Edit me"/>
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="addButton" Margin="20,0,0,0" Text="Add" Clicked="OnAddItemClicked"/>
+            <Button x:Name="refreshButton" Margin="6,0,0,0" Text="Refresh" Clicked="OnRefreshItemClicked"/>
+        </StackLayout>
         <ListView x:Name="listView" Margin="20">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Padding="20,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                        <Label Text="{Binding Name}" VerticalTextAlignment="Center" />
-                        <Button Text="Delete" Clicked="OnDeleteClicked" CommandParameter="{Binding}" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    </RelativeLayout>
-
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label Text="{Binding Description}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                            <Button Text="Delete" Clicked="OnDeleteClicked" CommandParameter="{Binding}" Margin="6"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
