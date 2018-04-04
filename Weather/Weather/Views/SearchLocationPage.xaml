@@ -12,9 +12,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" x:Name="Item">
-                            <Label Text="{Binding Description}" HorizontalOptions="StartAndExpand"/>
-                            <!--<Button x:Name="addButton" Text="Add" Margin="6" 
-                                    Clicked="OnAddLocationClicked"/>-->
+                            <Label Text="{Binding Description}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" Margin="6"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -41,6 +41,12 @@ namespace Weather.Data
             return RestService.GetCurrentConditions(locationKey);
         }
 
+        internal void removeLocation(string keyToRemove)
+        {
+            ConditionsList.Remove(LocationWeather[keyToRemove]);
+            LocationWeather.Remove(keyToRemove);
+        }
+
         public async void LoadConditions()
         {
             ConditionsList.Clear();

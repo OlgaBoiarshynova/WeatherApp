@@ -14,7 +14,7 @@
                     <ViewCell>
                         <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                             <Label Text="{Binding Description}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
-                            <Button Text="Delete" Clicked="OnDeleteClicked" CommandParameter="{Binding}" Margin="6"/>
+                            <Button Text="Delete" Clicked="OnDeleteClicked" BindingContext="{Binding}" Margin="6"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

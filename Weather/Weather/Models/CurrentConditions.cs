@@ -18,7 +18,7 @@ namespace Weather.Models
         {
             get
             {
-                return String.Format("{0} ({1}{2} / {3}{4})", WeatherText, Temperature.Metric.Value, Temperature.Metric.Unit, Temperature.Imperial.Value, Temperature.Imperial.Unit);
+                return String.Format("{0} ({1}℃ / {2}℉) | Observed at {3}", WeatherText, Temperature.Metric.Value, Temperature.Imperial.Value, LocalObservationDateTime.ToString());
             }
         }
 
