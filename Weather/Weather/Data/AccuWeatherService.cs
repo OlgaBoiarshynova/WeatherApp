@@ -20,13 +20,11 @@ namespace Weather.Data
 
         public AccuWeatherService()
         {
-            client = new HttpClient();
-            client.MaxResponseContentBufferSize = 256000; 
+            client = new HttpClient(new HttpLogHandler(new HttpClientHandler()));
+            client.MaxResponseContentBufferSize = 256000;
         }
 
-        
-
-        public async Task<List<CurrentConditions>> GetCurrentConditions(int locationKey)
+        public async Task<List<CurrentConditions>> GetCurrentConditions(string locationKey)
         {
             Uri uri = new Uri(string.Format(GET_CURRENT_CONDITIONS_URL, locationKey, API_KEY));
 
@@ -67,5 +65,7 @@ namespace Weather.Data
 
             return Locations;
         }
+
+
     }
 }

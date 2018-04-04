@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Weather.Data;
 using Xamarin.Forms;
 
 namespace Weather
 {
 	public partial class App : Application
 	{
-		public App ()
+        public static AccuWeatherManager WeatherManager { get; private set; }
+
+        public App ()
 		{
 			InitializeComponent();
 
-			MainPage = new Weather.MainPage();
+            WeatherManager = new AccuWeatherManager(new AccuWeatherService());
+
+			MainPage = new NavigationPage(new Weather.MainPage());
 		}
 
 		protected override void OnStart ()

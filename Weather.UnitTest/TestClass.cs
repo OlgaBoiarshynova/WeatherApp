@@ -16,7 +16,7 @@ namespace Weather.UnitTest
         public void TestMethod()
         {
             var mock = new Mock<HttpClient>();
-           // mock.Setup(cl => cl.GetAsync("")).Returns(new HttpResponseMessage());
+            mock.Setup(cl => cl.GetAsync("http://dataservice.accuweather.com/locations/v1/cities/search?apikey=OGlU3Yq1dm6cri1pYH0vsqGOi9jgtNPL&q=London")).ReturnsAsync(new HttpResponseMessage());
             // TODO: Add your test code here
             Assert.Pass("Your first passing test");
         }
