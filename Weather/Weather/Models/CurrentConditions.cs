@@ -14,5 +14,13 @@ namespace Weather.Models
         public Temperature Temperature { get; set; }
         public string MobileLink { get; set; }
         public string Link { get; set; }
+        public string Description
+        {
+            get
+            {
+                return String.Format("{0} ({1}{2} / {3}{4})", WeatherText, Temperature.Metric.Value, Temperature.Metric.Unit, Temperature.Imperial.Value, Temperature.Imperial.Unit);
+            }
+        }
+
     }
 }

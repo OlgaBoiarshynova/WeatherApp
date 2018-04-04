@@ -16,5 +16,6 @@ namespace Weather.Models
         public Country Country { get; set; }
         public AdministrativeArea AdministrativeArea { get; set; }
         public bool IsAlias { get; set; }
+        public string Description { get { return String.Format("{0} ({1}), {2}", EnglishName, AdministrativeArea.EnglishName ?? EnglishName, Country.EnglishName); } }
     }
 }
