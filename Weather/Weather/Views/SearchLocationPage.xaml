@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Weather.Views.SearchLocationPage">
     <StackLayout Orientation="Vertical">
+        <ActivityIndicator x:Name="activityIndicator" IsVisible="False" IsRunning="True" />
         <SearchBar x:Name="searchBar" HorizontalOptions="Fill" Margin="20" SearchButtonPressed="OnSearchRequested"/>
         <ListView x:Name="locationsListView"
             ItemsSource="{Binding Items}"

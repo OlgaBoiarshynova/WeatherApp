@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Weather"
              x:Class="Weather.MainPage">
     <StackLayout Orientation="Vertical">
+        <ActivityIndicator x:Name="activityIndicator" IsVisible="False" IsRunning="True" />
         <StackLayout Orientation="Horizontal">
             <Button x:Name="addButton" Margin="20,0,0,0" Text="Add" Clicked="OnAddItemClicked"/>
             <Button x:Name="refreshButton" Margin="6,0,0,0" Text="Refresh" Clicked="OnRefreshItemClicked"/>
