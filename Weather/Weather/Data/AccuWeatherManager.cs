@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Weather.Data
     public class AccuWeatherManager
     {
         IAccuWeatherService RestService { get; set; }
-        private List<Location> locationList;
+        
         public ObservableCollection<LocationWeatherInfo> ConditionsList { get; private set; }
 
         private Dictionary<string, LocationWeatherInfo> locationWeather;
@@ -29,6 +30,16 @@ namespace Weather.Data
         {
             this.RestService = restService;
             ConditionsList = new ObservableCollection<LocationWeatherInfo>();
+            if (App.Current.Properties.ContainsKey("locations"))
+            {
+                var locationsJson = App.Current.Properties["locations"] as string;
+                var locations = JsonConvert.DeserializeObject<List<LocationWeatherInfo>>(locationsJson);
+                foreach(LocationWeatherInfo item in locations)
+                {
+                    LocationWeather.Add(item.Location.Key, item);
+                    ConditionsList.Add(item);
+                }
+            }
         }
 
         public Task<List<Location>> GetLocations(string searchText)
@@ -41,10 +52,24 @@ namespace Weather.Data
             return RestService.GetCurrentConditions(locationKey);
         }
 
-        internal void removeLocation(string keyToRemove)
+        internal void AddLocation(Location location)
+        {
+            if (!LocationWeather.ContainsKey(location.Key))
+            {
+                var locationInfo = new LocationWeatherInfo()
+                {
+                    Location = location
+                };
+                LocationWeather.Add(location.Key, locationInfo);
+                LoadConditions();
+            }
+        }
+
+        internal void RemoveLocation(string keyToRemove)
         {
             ConditionsList.Remove(LocationWeather[keyToRemove]);
             LocationWeather.Remove(keyToRemove);
+            SaveLocations(LocationWeather.Values.ToList());
         }
 
         public async void LoadConditions()
@@ -52,21 +77,17 @@ namespace Weather.Data
             ConditionsList.Clear();
             foreach (string key in LocationWeather.Keys)
             {
-                var condition = await RestService.GetCurrentConditions(key);                
+                var condition = await RestService.GetCurrentConditions(key);
                 LocationWeather[key].WeatherConditions = condition.ElementAt(0);
                 ConditionsList.Add(LocationWeather[key]);
             }
-
+            SaveLocations(LocationWeather.Values.ToList());
         }
 
-        internal void addLocation(Location location)
+        private void SaveLocations(List<LocationWeatherInfo> list)
         {
-            var locationInfo = new LocationWeatherInfo()
-            {
-                Location = location
-            };
-            LocationWeather.Add(location.Key, locationInfo);
-            LoadConditions();
+            string json = JsonConvert.SerializeObject(list);
+            App.Current.Properties["locations"] = json;
         }
     }
 }
