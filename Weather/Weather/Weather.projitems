@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{2453B6C4-9D39-4F90-815E-F801F2EABDD9}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Weather</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\AccuWeatherManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\AccuWeatherService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\IAccuWeatherService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HttpLogHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\LocationWeatherInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\AdministrativeArea.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Country.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CurrentConditions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Imperial.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Location.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Metric.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Temperature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SearchLocationPage.xaml.cs">
+      <DependentUpon>SearchLocationPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SearchLocationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
