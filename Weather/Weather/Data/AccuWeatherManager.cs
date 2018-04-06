@@ -12,7 +12,7 @@ namespace Weather.Data
     public class AccuWeatherManager
     {
         IAccuWeatherService RestService { get; set; }
-        
+        public IDictionary<string, object> Settings { get; private set; }
         public ObservableCollection<LocationWeatherInfo> ConditionsList { get; private set; }
 
         private Dictionary<string, LocationWeatherInfo> locationWeather;
@@ -26,15 +26,21 @@ namespace Weather.Data
             set { }
         }
 
-        public AccuWeatherManager(IAccuWeatherService restService)
+        public AccuWeatherManager(IAccuWeatherService restService, IDictionary<string, object> settings)
         {
             this.RestService = restService;
+            this.Settings = settings;
             ConditionsList = new ObservableCollection<LocationWeatherInfo>();
-            if (App.Current.Properties.ContainsKey("locations"))
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
+            if (Settings.ContainsKey("locations"))
             {
                 var locationsJson = App.Current.Properties["locations"] as string;
                 var locations = JsonConvert.DeserializeObject<List<LocationWeatherInfo>>(locationsJson);
-                foreach(LocationWeatherInfo item in locations)
+                foreach (LocationWeatherInfo item in locations)
                 {
                     LocationWeather.Add(item.Location.Key, item);
                     ConditionsList.Add(item);
@@ -87,7 +93,7 @@ namespace Weather.Data
         private void SaveLocations(List<LocationWeatherInfo> list)
         {
             string json = JsonConvert.SerializeObject(list);
-            App.Current.Properties["locations"] = json;
+            Settings["locations"] = json;
         }
     }
 }

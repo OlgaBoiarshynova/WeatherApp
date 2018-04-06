@@ -15,7 +15,7 @@ namespace Weather
 		{
 			InitializeComponent();
 
-            WeatherManager = new AccuWeatherManager(new AccuWeatherService());
+            WeatherManager = new AccuWeatherManager(new AccuWeatherService(), Current.Properties);
 
 			MainPage = new NavigationPage(new Weather.MainPage());
 		}
