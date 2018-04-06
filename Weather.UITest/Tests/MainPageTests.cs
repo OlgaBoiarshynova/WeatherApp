@@ -14,15 +14,25 @@ namespace Weather.UITest
     [TestFixture]
     public class MainPageTests : BaseTest
     {
-
+        
+        [Test]
+        [Category("MainPageTests")]
+        public void AddButtonTest()
+        {
+            MainPage mainPage = new MainPage(session);
+            mainPage.OpenSearchLocationPage();
+            SearchLocationsPage searchLocationPage = new SearchLocationsPage(session);
+            Assert.IsTrue(searchLocationPage.IsPageOpen);
+        }
 
         [Test]
         [Category("MainPageTests")]
-        public void TestMethod()
+        public void CurrentConditionsList()
         {
             MainPage mainPage = new MainPage(session);
-            
-
+            mainPage.OpenSearchLocationPage();
+            SearchLocationsPage searchLocationPage = new SearchLocationsPage(session);
+            Assert.IsTrue(searchLocationPage.IsPageOpen);
         }
     }
 }

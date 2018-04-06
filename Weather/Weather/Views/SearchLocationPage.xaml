@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Weather.Views.SearchLocationPage">
+             x:Class="Weather.Views.SearchLocationPage" AutomationId="contentElement">
     <StackLayout Orientation="Vertical">
         <ActivityIndicator x:Name="activityIndicator" IsVisible="False" IsRunning="True" />
         <SearchBar x:Name="searchBar" AutomationId="searchBar" HorizontalOptions="Fill" Margin="20" SearchButtonPressed="OnSearchRequested"/>

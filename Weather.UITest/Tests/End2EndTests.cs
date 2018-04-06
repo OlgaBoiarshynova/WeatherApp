@@ -12,7 +12,7 @@ namespace Weather.UITest.Tests
     public class End2EndTests : BaseTest
     {
         [Test]
-        [Category("MainPageTests")]
+        [Category("End2EndTests")]
         public void TestMethod()
         {
             MainPage mainPage = new MainPage(session);
@@ -20,6 +20,7 @@ namespace Weather.UITest.Tests
             SearchLocationsPage searchPage = new SearchLocationsPage(session);
             searchPage.SearchForLocation("New York");
             searchPage.ReturnToMainPage();
+            //TODO: Add more actions and asserts
 
         }
     }

@@ -13,6 +13,13 @@ namespace Weather.UITest.PageObjects
         WindowsElement AddButton { get; set; }
         IReadOnlyCollection<WindowsElement> WeatherConditionsList { get; set; }
         WindowsElement RefreshButton { get; set; }
+        public override bool IsPageOpen
+        {
+            get
+            {
+                return AddButton.Displayed;
+            }
+        }
 
         public MainPage(WindowsDriver<WindowsElement> appSession) : base (appSession)
         {
@@ -31,6 +38,7 @@ namespace Weather.UITest.PageObjects
 
         protected override void InitializeElements()
         {
+            base.InitializeElements();
             AddButton = AppSession.FindElementByAccessibilityId("addButton");
             RefreshButton = AppSession.FindElementByAccessibilityId("refreshButton");
             WeatherConditionsList = AppSession.FindElementsByAccessibilityId("Label");
