@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Weather.Views.SearchLocationPage">
+             x:Class="Weather.Views.SearchLocationPage" AutomationId="contentElement">
     <StackLayout Orientation="Vertical">
         <ActivityIndicator x:Name="activityIndicator" IsVisible="False" IsRunning="True" />
-        <SearchBar x:Name="searchBar" HorizontalOptions="Fill" Margin="20" SearchButtonPressed="OnSearchRequested"/>
+        <SearchBar x:Name="searchBar" AutomationId="searchBar" HorizontalOptions="Fill" Margin="20" SearchButtonPressed="OnSearchRequested"/>
         <ListView x:Name="locationsListView"
             ItemsSource="{Binding Items}"
             ItemTapped="Handle_ItemTapped"
@@ -13,7 +13,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" x:Name="Item">
-                            <Label Text="{Binding Description}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" Margin="6"/>
+                            <Label Text="{Binding Description}" AutomationId="locationItem" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" Margin="6"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
